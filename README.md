@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# fal Model Benchmark
 
-## Getting Started
+Compare fal image generation models side by side with the same prompt. Each model card shows latency, estimated cost, and an aesthetic score from [cafeai/cafe_aesthetic](https://huggingface.co/cafeai/cafe_aesthetic).
 
-First, run the development server:
+## Setup
+
+1. Copy environment variables:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Add your API keys:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `FAL_KEY` — [fal.ai dashboard](https://fal.ai/dashboard/keys)
+- `HF_TOKEN` — [Hugging Face access token](https://huggingface.co/settings/tokens) (free tier works)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Install and run:
 
-## Learn More
+```bash
+npm install
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Models
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Configured in `lib/models.ts`:
 
-## Deploy on Vercel
+- `fal-ai/flux/schnell`
+- `fal-ai/flux/dev`
+- `fal-ai/flux-realism`
+- `fal-ai/stable-diffusion-v3-medium`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Toggle models on each card before running. Cost estimates use per-second rates defined in the registry (adjust as fal pricing changes).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy (Vercel)
+
+1. Push to GitHub and import the repo in Vercel.
+2. Add `FAL_KEY` and `HF_TOKEN` as environment variables.
+3. Deploy.
+
+## Not included (yet)
+
+- Nightly auto-benchmark / cached `benchmark-data.json`
+- Shareable run permalinks (`/run/[id]`)
+
+See `proposal.md` for the full roadmap.
