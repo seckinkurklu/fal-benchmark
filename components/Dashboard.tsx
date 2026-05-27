@@ -79,6 +79,7 @@ export function Dashboard() {
         });
 
         let aestheticScore: number | undefined;
+        let aestheticError: string | undefined;
         try {
           const scoreRes = await fetch("/api/score", {
             method: "POST",
@@ -88,9 +89,12 @@ export function Dashboard() {
           const scoreData = await scoreRes.json();
           if (scoreRes.ok) {
             aestheticScore = scoreData.score;
+          } else {
+            aestheticError = scoreData.error ?? "Scoring failed";
           }
-        } catch {
-          /* aesthetic scoring is optional */
+        } catch (err) {
+          aestheticError =
+            err instanceof Error ? err.message : "Scoring failed";
         }
 
         updateCard(modelId, {
@@ -101,6 +105,7 @@ export function Dashboard() {
             latencyMs: genData.latencyMs,
             costEstimate: genData.costEstimate,
             aestheticScore,
+            aestheticError,
           },
         });
       } catch (err) {

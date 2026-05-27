@@ -29,6 +29,7 @@ export function ModelCard({
   onToggle,
 }: ModelCardProps) {
   const aesthetic = result?.aestheticScore;
+  const aestheticError = result?.aestheticError;
 
   return (
     <article
@@ -87,7 +88,15 @@ export function ModelCard({
         <Metric label="Latency" value={formatLatency(result?.latencyMs)} />
         <Metric
           label="Aesthetic"
-          value={aesthetic != null ? `${aesthetic.toFixed(1)}/10` : status === "running" ? "…" : "—"}
+          value={
+            aesthetic != null
+              ? `${aesthetic.toFixed(1)}/10`
+              : status === "running"
+                ? "…"
+                : aestheticError
+                  ? "failed"
+                  : "—"
+          }
         />
         <Metric label="Est. cost" value={formatCost(result?.costEstimate)} />
       </div>
@@ -101,6 +110,11 @@ export function ModelCard({
             />
           </div>
         </div>
+      )}
+      {aestheticError && status === "done" && (
+        <p className="px-4 pb-3 text-xs text-amber-600 dark:text-amber-400">
+          Aesthetic score unavailable: {aestheticError}
+        </p>
       )}
     </article>
   );

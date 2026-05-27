@@ -17,14 +17,19 @@ export const MODELS: ModelConfig[] = [
     costPerSecond: 0.0025,
   },
   {
-    id: "fal-ai/flux-realism",
-    name: "FLUX Realism",
-    costPerSecond: 0.0025,
+    id: "fal-ai/flux-pro/v1.1",
+    name: "FLUX Pro v1.1",
+    costPerSecond: 0.004,
   },
   {
-    id: "fal-ai/stable-diffusion-v3-medium",
-    name: "SD3 Medium",
-    costPerSecond: 0.0018,
+    id: "fal-ai/recraft/v3/text-to-image",
+    name: "Recraft V3",
+    costPerSecond: 0.003,
+  },
+  {
+    id: "fal-ai/ideogram/v3",
+    name: "Ideogram V3",
+    costPerSecond: 0.003,
   },
 ];
 

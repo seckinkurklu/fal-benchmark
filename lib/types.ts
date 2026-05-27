@@ -6,5 +6,6 @@ export type ModelResult = {
   latencyMs?: number;
   costEstimate?: number;
   aestheticScore?: number;
+  aestheticError?: string;
   error?: string;
 };
