@@ -33,6 +33,7 @@ Configured in `lib/models.ts`:
 - `fal-ai/flux-pro/v1.1`
 - `fal-ai/recraft/v3/text-to-image`
 - `fal-ai/ideogram/v3`
+- `fal-ai/krea/v2/large/text-to-image`
 
 Toggle models on each card before running. Cost estimates use per-second rates defined in the registry (adjust as fal pricing changes).
 

@@ -31,6 +31,11 @@ export const MODELS: ModelConfig[] = [
     name: "Ideogram V3",
     costPerSecond: 0.003,
   },
+  {
+    id: "fal-ai/krea/v2/large/text-to-image",
+    name: "KREA 2",
+    costPerSecond: 0.006,
+  },
 ];
 
 export function getModel(id: string): ModelConfig | undefined {
