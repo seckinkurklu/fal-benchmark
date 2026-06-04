@@ -27,8 +27,8 @@ export const MODELS: ModelConfig[] = [
     costPerSecond: 0.003,
   },
   {
-    id: "fal-ai/ideogram/v3",
-    name: "Ideogram V3",
+    id: "ideogram/v4",
+    name: "Ideogram V4",
     costPerSecond: 0.003,
   },
   {
